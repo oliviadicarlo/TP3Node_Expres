@@ -1,0 +1,25 @@
+{
+  "name": "tp3node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliviadicarlo/TP3Node_Expres.git"
+  },
+  "author": "Olivia Di Carlo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oliviadicarlo/TP3Node_Expres/issues"
+  },
+  "homepage": "https://github.com/oliviadicarlo/TP3Node_Expres#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
