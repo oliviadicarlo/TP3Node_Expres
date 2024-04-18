@@ -1,7 +1,7 @@
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 
-import  {sumar, multiplicar, restar, dividir } from './src/modules/matematica.js';
+import  { PI, sumar, multiplicar, restar, dividir, createArray } from './src/modules/matematica.js';
 import  Alumno from './src/models/alumno.js'
 import {OMDBSearchByPage, OMDBSearchComplete, OMDBGetByImdbID} from './src/modules/omdb-wrapper.js'; 
 
