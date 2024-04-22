@@ -4,6 +4,8 @@ import cors from "cors"; // hacer npm i cors
 import  { PI, sumar, multiplicar, restar, dividir, createArray } from './src/modules/matematica.js';
 import  Alumno from './src/models/alumno.js'
 import {OMDBSearchByPage, OMDBSearchComplete, OMDBGetByImdbID} from './src/modules/omdb-wrapper.js'; 
+import validacionesHelper from './src/modules/validacionesHelper.js'
+
 
 const app = express();
 const port = 3000;
@@ -21,6 +23,7 @@ res.status(200).send('Ya estoy respondiendo!');
 
 //02
 app.get('/saludar:nombre', (req, res) => { 
+ const nombre = getStringOrDefault(req.params.nombre, '');
     
 res.status(200).send('Hola  ' +  req.params.nombre);
 })
@@ -42,17 +45,19 @@ app.get('/validarfecha/:ano/:mes/:dia', (req, res) => {
 //'/matematica/sumar?n1={numero}&n2={numero}' --> solo la funcion
 app.get('/matematica/sumar ', (req, res) =>
 {
-    const n1 = parseFloat(req.query.n1);
-    const n2 = parseFloat(req.query.n2);
+    const n1 =validacionesHelper.getIntegerOrDefault(req.query.n1,0); 
+    const n2 =validacionesHelper.getIntegerOrDefault(req.query.n2,0); 
     const resultado = sumar(n1,n2); 
+    console.log('n1', n1)
+    console.log('n2', n2)
     res.status(200).send('El resultado es:' , resultado);
 })  
 
 //05
 app.get('/matematica/restar', (req, res) =>
 {
-    const n1 = parseFloat(req.query.n1);
-    const n2 = parseFloat(req.query.n2);
+    const n1 =validacionesHelper.getIntegerOrDefault(req.query.n1,0); 
+    const n2 =validacionesHelper.getIntegerOrDefault(req.query.n2,0); 
     const resultado = restar(n1,n2); 
     res.status(200).send('El resultado es:' , resultado);
 })  
@@ -60,16 +65,16 @@ app.get('/matematica/restar', (req, res) =>
 //06
 app.get('/matematica/multiplicar ', (req, res) =>
 {
-    const n1 = parseFloat(req.query.n1);
-    const n2 = parseFloat(req.query.n2);
+    const n1 =validacionesHelper.getIntegerOrDefault(req.query.n1,0); 
+    const n2 =validacionesHelper.getIntegerOrDefault(req.query.n2,0); 
     const resultado = multiplicar(n1,n2); 
     res.status(200).send('El resultado es:' , resultado);
 }) 
 //07
 app.get('/matematica/dividir', (req, res) =>
 {
-    const n1 = parseFloat(req.query.n1);
-    const n2 = parseFloat(req.query.n2);
+    const n1 =validacionesHelper.getIntegerOrDefault(req.query.n1,0); 
+    const n2 =validacionesHelper.getIntegerOrDefault(req.query.n2,0); 
     if(n2==0)
     {
         res.status(400).send('Bad request');
